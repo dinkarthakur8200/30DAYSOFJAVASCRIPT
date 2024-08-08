@@ -204,6 +204,7 @@ var once = function(fn) {
     }
 };
 
+
 /**
  * let fn = (a,b,c) => (a + b + c)
  * let onceFn = once(fn)
@@ -211,6 +212,7 @@ var once = function(fn) {
  * onceFn(1,2,3); // 6
  * onceFn(2,3,6); // returns undefined without calling fn
  */
+
 
 // DAY 11
 // 2623 
@@ -230,6 +232,7 @@ function memoize(fn) {
     }
 }
 
+
 // Day12 
 // Add two promises ...
 // 2723...
@@ -244,9 +247,9 @@ var addTwoPromises = async function(promise1, promise2) {
     })
 };
 
+
+
 // DAY 13
-
-
 /** 
  * let callCount = 0;
  * const memoizedFn = memoize(function (a, b) {
@@ -257,9 +260,6 @@ var addTwoPromises = async function(promise1, promise2) {
  * memoizedFn(2, 3) // 5
  * console.log(callCount) // 1 
  */
-
-
-
 
 
 //  DAY 15
@@ -295,10 +295,14 @@ var timeLimit = function(fn, t) {
     }
 };
 
+
+
 /**
  * const limited = timeLimit((t) => new Promise(res => setTimeout(res, t)), 100);
  * limited(150).catch(console.log) // "Time Limit Exceeded" at t=100ms
  */
+
+
 
 // Day17
 // jscodingchallenge
@@ -308,12 +312,15 @@ var TimeLimitedCache = function() {
     this.cache = new Map();
 };
 
+
 /** 
  * @param {number} key
  * @param {number} value
  * @param {number} duration time until expiration in ms
  * @return {boolean} if un-expired key already existed
  */
+
+
 TimeLimitedCache.prototype.set = function(key, value, duration){
     var found = this.cache.has(key) ;
     if(found){
@@ -323,6 +330,7 @@ TimeLimitedCache.prototype.set = function(key, value, duration){
     this.cache.set(key,[value,timer]);
     return found ;
 };
+
 
 /** 
  * @param {number} key
@@ -335,12 +343,15 @@ TimeLimitedCache.prototype.get = function(key) {
     return -1 ;
 };
 
+
+
 /** 
  * @return {number} count of non-expired keys
  */
 TimeLimitedCache.prototype.count = function() {
     return this.cache.size ;
 };
+
 
 /**
  * 
@@ -350,6 +361,7 @@ TimeLimitedCache.prototype.count = function() {
  * timeLimitedCache.count() // 1
  */
 
+
 // Day18 
 //  #2627
 // Debounce function 
@@ -358,12 +370,15 @@ var TimeLimitedCache = function() {
     this.cache = new Map();
 };
 
+
+
 /** 
  * @param {number} key
  * @param {number} value
  * @param {number} duration time until expiration in ms
  * @return {boolean} if un-expired key already existed
  */
+
 TimeLimitedCache.prototype.set = function(key, value, duration){
     var found = this.cache.has(key) ;
     if(found){
@@ -373,6 +388,7 @@ TimeLimitedCache.prototype.set = function(key, value, duration){
     this.cache.set(key,[value,timer]);
     return found ;
 };
+
 
 /** 
  * @param {number} key
@@ -385,6 +401,7 @@ TimeLimitedCache.prototype.get = function(key) {
     return -1 ;
 };
 
+
 /** 
  * @return {number} count of non-expired keys
  */
@@ -392,12 +409,14 @@ TimeLimitedCache.prototype.count = function() {
     return this.cache.size ;
 };
 
+
 /**
  * const timeLimitedCache = new TimeLimitedCache()
  * timeLimitedCache.set(1, 42, 1000); // false
  * timeLimitedCache.get(1) // 42
  * timeLimitedCache.count() // 1
  */
+
 
 
 const expensiveOperation = () => {
@@ -410,6 +429,7 @@ const expensiveOperation = () => {
   debouncedOperation();
   debouncedOperation();
   debouncedOperation();
+
 
 //   Day19 
 //   2721
@@ -433,6 +453,7 @@ var promiseAll = function(functions){
     })
 };
 
+
 // Day 20
 // 2727
 // Is OBject Empty 
@@ -450,6 +471,7 @@ var isEmpty = function(obj) {
     }
 };
 
+
 // Day21
 // 2627
 // Chunk Array 
@@ -466,6 +488,7 @@ var chunk = function(arr, size) {
     }
     return chunkedArr;
   }
+
 
 //   Day22
 // 2619 
@@ -486,6 +509,7 @@ Array.prototype.last = function() {
    * arr.last(); // 3
    */
 
+
 //   Day23
 //   2631
 //   Group By
@@ -500,6 +524,8 @@ Array.prototype.groupBy = function(fn) {
      }
      return obj ;
 };
+
+
 // Day24
 // 2724-Sort By 
 /**
@@ -510,6 +536,8 @@ Array.prototype.groupBy = function(fn) {
 var sortBy = function(arr, fn) {
     return arr.sort((a,b)=>fn(a)-fn(b));
 };
+
+
 // Day25
 // 2722-Join Arrays By IDs ..
 /**
@@ -528,6 +556,8 @@ var join = function(arr1, arr2) {
     return Object.values(obj);
 };
 
+
+
 // Day26
 // 2625-Flatten deeply nested ... 
 var flat = function (arr, n, res=[],curr=0) {
@@ -541,6 +571,7 @@ var flat = function (arr, n, res=[],curr=0) {
     }
     return res
 };
+
 
 // Day27
 // 2705-Compact Object ...
@@ -564,6 +595,7 @@ var compactObject = function(obj) {
   }
   return obj
 };
+
 
 // ---------------------------Day 28----------------------------
 // -------------------------2694-Event Emitter------------------
@@ -606,6 +638,8 @@ class EventEmitter {
     }
 }
 
+
+
 // --------------------------Day29--------------------------------------
 // ------------------2695-Array wrapper------------------------------
 var ArrayWrapper = function(nums) {
@@ -625,6 +659,9 @@ ArrayWrapper.prototype.valueOf = function() {
 ArrayWrapper.prototype.toString = function() {
     return "["+String(this.nums)+"]"
 }
+
+
+
 
 // ------------------------Day30----------------------
 // --------2726 -- Calculator with Method Chaining ----------------
